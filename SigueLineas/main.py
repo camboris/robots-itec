@@ -55,7 +55,6 @@ def avanzar(velocidad=1, sentido="adelante", ajuste=(0, 0)):
     if sentido == "adelante":
         motor_der.duty(base + ajuste[0] - offset)
         motor_izq.duty(base + ajuste[1] + offset)
-        print("motor", motor_der.duty(), motor_izq.duty())
     else:
         motor_der.duty(base + ajuste[0] + offset)
         motor_izq.duty(base + ajuste[1] - offset)
@@ -86,9 +85,9 @@ while True:
     if IR_der.value() == 0 and IR_izq.value() == 0:
         avanzar()
     elif IR_der.value() == 0 and IR_izq.value() == 1:
-        girar_derecha()
-    elif IR_der.value() == 1 and IR_izq.value() == 0:
         girar_izquierda()
+    elif IR_der.value() == 1 and IR_izq.value() == 0:
+        girar_derecha()
     elif IR_der.value() == 1 and IR_izq.value() == 1:
         detener()
 
